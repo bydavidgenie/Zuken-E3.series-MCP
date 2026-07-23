@@ -1,0 +1,54 @@
+## Zuken Proprietary & License-sensitive Files
+*.chm
+*.pdf
+*.hwp
+/help_extracted/
+/help_source_extracted/
+/help_source/vector_knowledge.db
+
+## OS-specific / IDE Files
+.vs/
+.idea/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## C# Build Artifacts
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+
+## Python Caches & Environments
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv/
+env/
+venv/
+
+## Application Cache & Local Configuration
+/temp_cache/
+/settings.json
+/sheet_test.png
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+## User Scratch & Test Directory
+/scratch/
+
+## Non-C# Project Folders & Python MCP Server
+/main.py
+/mcp_server.py
+/wiki/
+/static/
+/help_source/

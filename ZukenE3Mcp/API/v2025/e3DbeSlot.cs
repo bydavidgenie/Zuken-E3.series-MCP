@@ -1,0 +1,104 @@
+using System;
+using System.Runtime.InteropServices;
+
+namespace ZukenE3Mcp.API.v2025
+{
+    public class e3DbeSlot : IDisposable
+    {
+        private readonly Zuken.E3.Interop.e3DbeSlot _raw;
+        private bool _disposed;
+
+        public e3DbeSlot(Zuken.E3.Interop.e3DbeSlot raw)
+        {
+            _raw = raw;
+        }
+
+        public Zuken.E3.Interop.e3DbeSlot RawObject => _raw;
+
+        public int GetAreaPolygon(ref object xarr, ref object yarr, ref object zarr, int flags)
+        {
+            object local_xarr = xarr;
+            object local_yarr = yarr;
+            object local_zarr = zarr;
+            var retVal = StaThreadExecutor.Instance.Execute(() => _raw.GetAreaPolygon(ref local_xarr, ref local_yarr, ref local_zarr, flags));
+            xarr = local_xarr;
+            yarr = local_yarr;
+            zarr = local_zarr;
+            return retVal;
+        }
+
+        public int GetDirection(out object x, out object y, out object z)
+        {
+            object local_x = default;
+            object local_y = default;
+            object local_z = default;
+            var retVal = StaThreadExecutor.Instance.Execute(() => _raw.GetDirection(out local_x, out local_y, out local_z));
+            x = local_x;
+            y = local_y;
+            z = local_z;
+            return retVal;
+        }
+
+        public int GetFixType()
+        {
+            return StaThreadExecutor.Instance.Execute(() => _raw.GetFixType());
+        }
+
+        public int GetId()
+        {
+            return StaThreadExecutor.Instance.Execute(() => _raw.GetId());
+        }
+
+        public string GetMountType()
+        {
+            return StaThreadExecutor.Instance.Execute(() => _raw.GetMountType());
+        }
+
+        public int GetPosition(int point, ref object x, ref object y, ref object z)
+        {
+            object local_x = x;
+            object local_y = y;
+            object local_z = z;
+            var retVal = StaThreadExecutor.Instance.Execute(() => _raw.GetPosition(point, ref local_x, ref local_y, ref local_z));
+            x = local_x;
+            y = local_y;
+            z = local_z;
+            return retVal;
+        }
+
+        public int GetRotation(out object angle)
+        {
+            object local_angle = default;
+            var retVal = StaThreadExecutor.Instance.Execute(() => _raw.GetRotation(out local_angle));
+            angle = local_angle;
+            return retVal;
+        }
+
+        public string GetSlotName(int flags)
+        {
+            return StaThreadExecutor.Instance.Execute(() => _raw.GetSlotName(flags));
+        }
+
+        public int SetId(int id)
+        {
+            return StaThreadExecutor.Instance.Execute(() => _raw.SetId(id));
+        }
+
+        public int SetSlotName(string name, int flags)
+        {
+            return StaThreadExecutor.Instance.Execute(() => _raw.SetSlotName(name, flags));
+        }
+
+        public void Dispose()
+        {
+            if (!_disposed)
+            {
+                if (_raw != null && Marshal.IsComObject(_raw))
+                {
+                    Marshal.ReleaseComObject(_raw);
+                }
+                _disposed = true;
+            }
+        }
+    }
+}
